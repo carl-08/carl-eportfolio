@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carl Jhimuel Madanglog | Computer Engineering E-Portfolio</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg2: #111827;
+      --card: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --soft: #94a3b8;
+      --accent: #38bdf8;
+      --accent2: #2563eb;
+      --line: rgba(255, 255, 255, 0.14);
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.20), transparent 35%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      line-height: 1.6;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(15, 23, 42, 0.78);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo { font-weight: 800; letter-spacing: 0.5px; color: var(--text); }
+
+    nav .links { display: flex; gap: 18px; flex-wrap: wrap; }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.2s ease;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    section { padding: 70px 7%; }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 34px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #bae6fd;
+      background: rgba(56, 189, 248, 0.10);
+      border-radius: 999px;
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 6vw, 70px);
+      line-height: 1.05;
+      margin: 0 0 18px;
+    }
+
+    h2 { font-size: clamp(28px, 4vw, 42px); margin: 0 0 18px; }
+
+    h3 { margin-top: 0; font-size: 22px; }
+
+    p { color: var(--muted); margin-top: 0; }
+
+    .hero p { font-size: 18px; max-width: 760px; }
+
+    .panel, .card, .artifact {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+    }
+
+    .panel { padding: 28px; }
+
+    .student-info { display: grid; gap: 11px; margin-top: 20px; }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 8px;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 8px;
+    }
+
+    .info-row strong { color: var(--text); }
+
+    .button-row { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 26px; }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 18px;
+      border-radius: 14px;
+      background: linear-gradient(90deg, var(--accent2), #06b6d4);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      border: none;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.22);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--line);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .card { padding: 22px; min-height: 210px; }
+
+    .card .icon { font-size: 32px; margin-bottom: 10px; }
+
+    .artifact { padding: 28px; margin-top: 24px; }
+
+    .artifact-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+
+    .file-label {
+      color: #bae6fd;
+      background: rgba(56, 189, 248, 0.10);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .mini-card {
+      background: rgba(15, 23, 42, 0.70);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .mini-card h4 { margin: 0 0 8px; color: var(--text); font-size: 17px; }
+
+    .link-list { display: grid; gap: 14px; margin-top: 20px; }
+
+    .link-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--line);
+    }
+
+    .link-item span { color: var(--muted); }
+
+    footer {
+      padding: 28px 7%;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
+      text-align: center;
+      background: rgba(15, 23, 42, 0.55);
+    }
+
+    @media (max-width: 900px) {
+      nav { align-items: flex-start; gap: 10px; flex-direction: column; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .two-col { grid-template-columns: 1fr; }
+      .info-row { grid-template-columns: 1fr; }
+      .link-item { align-items: flex-start; flex-direction: column; }
+    }
+
+    @media (max-width: 560px) {
+      section { padding: 54px 5%; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">Carl Jhimuel Madanglog</div>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#works">Relevant Works</a>
+      <a href="#artifacts">Artifacts</a>
+      <a href="#reflection">Reflection</a>
+          </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div>
+      <span class="badge">Computer Engineering E-Portfolio</span>
+      <h1>Carl Jhimuel Madanglog</h1>
+      <p>
+        Welcome to my e-Portfolio. This website presents my academic works,
+        class activities, project outputs, source codes, and prototype demonstration.
+        It shows my learning progress, technical skills, and growth as a Computer
+        Engineering student.
+      </p>
+      <div class="button-row">
+        <a class="btn" href="#works">View Relevant Works</a>
+        <a class="btn secondary" href="https://road-condition-ai-zkylvumnqvpboptpuq2g4m.streamlit.app/" target="_blank">Open AI Web App</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Student Information</h3>
+      <div class="student-info">
+        <div class="info-row"><strong>Name</strong><span>Carl Jhimuel Madanglog</span></div>
+        <div class="info-row"><strong>Course</strong><span>Bachelor of Science in Computer Engineering</span></div>
+        <div class="info-row"><strong>Section</strong><span>301G</span></div>
+        <div class="info-row"><strong>School</strong><span>Jose Rizal University</span></div>
+        <div class="info-row"><strong>Subject</strong><span>CPE C313 Artificial Intelligence</span></div>
+              </div>
+    </div>
+  </section>
+
+  <section id="works">
+    <h2>Relevant Works / Artifacts</h2>
+    <p>
+      This section contains the required artifacts for my e-Portfolio. Each artifact includes
+      a file or link, a short description, and a reflection about its contribution to CpE Student
+      Outcomes and my personal goals.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">📘</div>
+        <h3>Compilation of Activities</h3>
+        <p>Performance Tasks and Laboratory Activities compiled into one PDF.</p>
+        <a class="btn" href="#artifact1">View Artifact</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">📝</div>
+        <h3>Journal Article</h3>
+        <p>AI-based road condition detection project documentation in journal format.</p>
+        <a class="btn" href="#artifact2">View Artifact</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">💻</div>
+        <h3>AI Project Source Code</h3>
+        <p>GitHub repository and source code files for the road condition AI project.</p>
+        <a class="btn" href="#artifact3">View Artifact</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🚀</div>
+        <h3>Working Model</h3>
+        <p>Deployed Streamlit web application for testing the AI prototype.</p>
+        <a class="btn" href="#artifact4">View Artifact</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="artifacts">
+    <h2>Artifacts</h2>
+
+    <article id="artifact1" class="artifact">
+      <div class="artifact-header">
+        <div>
+          <span class="file-label">ARTIFACT 1</span>
+          <h3>Compilation of Activities</h3>
+          <p><strong>File Name:</strong> Compilation of Activity.pdf</p>
+        </div>
+        <a class="btn" href="https://drive.google.com/file/d/1vgynq3IICC52T3-YeIjr-U61jtp7FJRW/view?usp=sharing" target="_blank">Open Compilation of Activity</a>
+      </div>
+
+      <p>This artifact contains my compiled Performance Tasks and Laboratory Activities completed during the course.</p>
+
+      <div class="two-col">
+        <div class="mini-card">
+          <h4>Contribution to CpE Student Outcomes</h4>
+          <p>This artifact shows my ability to apply computer engineering concepts through laboratory tasks and performance activities. It helped me practice technical documentation, problem-solving, and the proper use of computing tools.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Contribution to Personal Goals</h4>
+          <p>This helped me become more organized and confident in completing technical school tasks. It also helped me understand how lessons are applied in actual activities.</p>
+        </div>
+      </div>
+    </article>
+
+    <article id="artifact2" class="artifact">
+      <div class="artifact-header">
+        <div>
+          <span class="file-label">ARTIFACT 2</span>
+          <h3>Journal Article</h3>
+          <p><strong>File Name:</strong> Journal Article.pdf</p>
+        </div>
+        <a class="btn" href="https://drive.google.com/file/d/1SC6_5edHdUrLiwbOwZqOwIWunqWpVrRS/view?usp=sharing" target="_blank">Open Journal Article PDF</a>
+      </div>
+
+      <p><strong>Title:</strong> AI-Based Road Surface and Damage Detection with Condition Scoring Using YOLO</p>
+      <p>This artifact contains our journal article about an AI-based road condition assessment system. The project uses YOLO models to classify road surface types, detect road damages such as cracks, potholes, and manholes, and generate a road condition score. The system was also deployed as a Streamlit web application for easier image testing and demonstration.</p>
+
+      <div class="two-col">
+        <div class="mini-card">
+          <h4>Contribution to CpE Student Outcomes</h4>
+          <p>This artifact contributes to my Computer Engineering student outcomes by showing my ability to conduct research, analyze a real-world problem, and document a technology-based solution. It also helped me apply concepts in artificial intelligence, computer vision, model evaluation, and software deployment.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Contribution to Personal Goals</h4>
+          <p>This artifact helped me improve my research writing, technical explanation, and project documentation skills. It also gave me more experience in presenting an AI project in a professional way.</p>
+        </div>
+      </div>
+    </article>
+
+    <article id="artifact3" class="artifact">
+      <div class="artifact-header">
+        <div>
+          <span class="file-label">ARTIFACT 3</span>
+          <h3>AI Project Source Code</h3>
+          <p><strong>Repository:</strong> road-condition-ai</p>
+        </div>
+        <div class="button-row">
+          <a class="btn" href="https://github.com/carl-08/road-condition-ai" target="_blank">View GitHub Repository</a>
+          <a class="btn secondary" href="#" target="_blank">Open Source Code PDF</a>
+        </div>
+      </div>
+
+      <p>This artifact contains the source code of our AI-based road condition detection project. The project includes the web application code, model loading scripts, damage detection, surface classification, scoring logic, validation scripts, and project dependencies.</p>
+
+      <div class="two-col">
+        <div class="mini-card">
+          <h4>Contribution to CpE Student Outcomes</h4>
+          <p>This artifact shows my ability to design, develop, test, and document a working AI-based system. It reflects my programming skills, logical thinking, software development knowledge, and ability to apply computer engineering concepts to a real-world problem.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Contribution to Personal Goals</h4>
+          <p>This helped me improve my coding skills and gave me hands-on experience in building a real AI project. It also helped me understand how to organize source code, manage project files, and prepare a project for presentation and deployment.</p>
+        </div>
+      </div>
+    </article>
+
+    <article id="artifact4" class="artifact">
+      <div class="artifact-header">
+        <div>
+          <span class="file-label">ARTIFACT 4</span>
+          <h3>Working Model / Prototype Demonstration</h3>
+          <p><strong>File / Link:</strong> Streamlit Web Application</p>
+        </div>
+        <a class="btn" href="https://road-condition-ai-zkylvumnqvpboptpuq2g4m.streamlit.app/" target="_blank">Open Streamlit Web App</a>
+      </div>
+
+      <p>This artifact contains the working web application of our AI-based road condition detection project. The system allows users to upload a road image, then it classifies the road surface type, detects visible road damage, calculates a road condition score, and displays a short explanation of the result.</p>
+
+      <div class="two-col">
+        <div class="mini-card">
+          <h4>Contribution to CpE Student Outcomes</h4>
+          <p>This artifact demonstrates my ability to create, test, deploy, and present a functional AI-based system. It shows how I applied programming, computer vision, model integration, and web application development to solve a real-world problem.</p>
+        </div>
+        <div class="mini-card">
+          <h4>Contribution to Personal Goals</h4>
+          <p>This helped me gain experience in deploying an AI project as a usable web application. It also improved my confidence in presenting a working prototype that can be accessed and tested by other users.</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="reflection">
+    <h2>Reflection / Conclusion</h2>
+    <div class="panel">
+      <p>Creating this e-Portfolio helped me organize and present my academic works in a professional way. Each artifact represents the skills I developed, such as programming, research, documentation, problem-solving, and project presentation. This portfolio also helped me see my growth as a Computer Engineering student and gave me a clearer direction for my future goals.</p>
+    </div>
+  </section>
+
+  <footer>
+    Carl Jhimuel Madanglog • CPE C313 Artificial Intelligence • Section 301G • Jose Rizal University
+  </footer>
+</body>
+</html>
